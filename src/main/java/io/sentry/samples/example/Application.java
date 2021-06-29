@@ -109,7 +109,7 @@ public class Application {
 
 
 		try {
-  		throw new Exception("This is a test.");
+  		throw new Exception("hiya this is a test!");
 		} catch (Exception e) {
   		Sentry.captureException(e);
 		}
