@@ -15,14 +15,14 @@ public class CustomBeforeSendCallback implements SentryOptions.BeforeSendCallbac
     public SentryEvent execute(SentryEvent event, Object hint) {
         // Data Scrubbing
         // Example: Never send server name in events
-        // event.setServerName(null);
+        event.setServerName(null);
 
         // Fingerprinting
         // Example: Group together errors that are not captured by the Application class's logger.
-        // if (event.getLogger() != "io.sentry.samples.example.Application" && event.getLogger() != null) {
-        //     System.out.print("\nnon-app, so set same fingerprint\n");
-        //     event.setFingerprints(Arrays.asList("non-app"));
-        // }
+        if (event.getLogger() != "io.sentry.samples.example.Application" && event.getLogger() != null) {
+            System.out.print("\nnon-app, so set same fingerprint\n");
+            event.setFingerprints(Arrays.asList("non-app"));
+        }
         return event;
     }
 }
