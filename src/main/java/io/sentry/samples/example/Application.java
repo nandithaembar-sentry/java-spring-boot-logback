@@ -106,6 +106,13 @@ public class Application {
 		inventory.put("hammer", 1);
 
 		SpringApplication.run(Application.class, args);
+
+
+		try {
+  		throw new Exception("This is a test.");
+		} catch (Exception e) {
+  		Sentry.captureException(e);
+		}
 	}
 
 	@GetMapping("/hello")
